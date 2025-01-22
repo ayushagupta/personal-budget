@@ -1,7 +1,8 @@
 from fastapi import FastAPI
+from app.routers import categories
 
-app = FastAPI()
+app = FastAPI(
+    title="Personal Budget App"
+)
 
-@app.get("/")
-def sample_function():
-    return {"message": "Hello world"}
+app.include_router(categories.router)
