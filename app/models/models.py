@@ -34,7 +34,7 @@ class Transaction(Base):
     id = Column(Integer, primary_key=True, nullable=False, unique=True, autoincrement=True)
     amount = Column(Float, nullable=False)
     is_expense = Column(Boolean, nullable=False, default=True, server_default="true")
-    date = Column(Date, server_default=func.now())
+    transaction_date = Column(Date, server_default=func.now())
 
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     user = relationship("User", back_populates="transactions")

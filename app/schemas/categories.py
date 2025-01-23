@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional, List
 
 class CategoryBase(BaseModel):
@@ -19,7 +19,7 @@ class CategoryResponse(CategoryBase):
         from_attributes = True
 
 class CategoriesResponse(BaseModel):
-    total_count: int
+    total_count: int = Field(..., ge=0, description="Total count must be non-negative.")
     data: List[CategoryResponse]
 
     class Config:
