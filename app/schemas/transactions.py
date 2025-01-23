@@ -16,9 +16,9 @@ class TransactionCreate(TransactionBase):
 
 class TransactionUpdate(BaseModel):
     amount: float | None = Field(None, gt=0, description="Transaction amount must be positive.")
-    is_expense: bool | None = None
-    transaction_date: date | None = None
-    category_id: int | None = None
+    is_expense: bool
+    transaction_date: date
+    category_id: int
 
 class TransactionResponse(TransactionBase):
     id: int

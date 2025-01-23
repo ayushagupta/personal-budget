@@ -19,8 +19,8 @@ class BudgetCreate(BudgetBase):
     pass
 
 class BudgetUpdate(BaseModel):
-    limit: Optional[float] = None
-    period: Optional[Literal["daily", "weekly", "monthly"]] = None
+    limit: float
+    period: Literal["daily", "weekly", "monthly"]
 
 
 class BudgetResponse(BudgetBase):

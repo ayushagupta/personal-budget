@@ -9,7 +9,7 @@ class CategoryCreate(CategoryBase):
     pass
 
 class CategoryUpdate(CategoryBase):
-    name: Optional[str] = None
+    name: str
     description: Optional[str] = None
 
 class CategoryResponse(CategoryBase):
