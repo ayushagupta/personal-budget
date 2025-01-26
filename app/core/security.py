@@ -20,23 +20,23 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
 
 
-async def create_access_token(data: dict, expires_delta: timedelta):
+def create_access_token(data: dict, expires_delta: timedelta):
     payload = data.copy()
     expire = datetime.now(timezone.utc) + expires_delta
     payload.update({"exp": expire})
     return jwt.encode(payload, settings.secret_key, algorithm=settings.algorithm)
 
 
-async def create_refresh_token(data: dict):
+def create_refresh_token(data: dict):
     return jwt.encode(data, settings.secret_key, algorithm=settings.algorithm)
 
 
-async def get_user_token(user_id: int, refresh_token: str = None):
+def get_user_token(user_id: int, refresh_token: str = None):
     payload = {"id": user_id}
-    access_token = await create_access_token(payload, timedelta(minutes=settings.access_token_expire_minutes))
+    access_token = create_access_token(payload, timedelta(minutes=settings.access_token_expiry_minutes))
 
     if not refresh_token:
-        refresh_token = await create_refresh_token(payload)
+        refresh_token = create_refresh_token(payload)
 
     return TokenResponse(
         access_token=access_token,

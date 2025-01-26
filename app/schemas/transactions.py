@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import List
 from datetime import date
-from app.schemas.users import UserBase
 from app.schemas.categories import CategoryBase
 
 class TransactionBase(BaseModel):
@@ -22,7 +21,6 @@ class TransactionUpdate(BaseModel):
 
 class TransactionResponse(TransactionBase):
     id: int
-    user: UserBase
     category: CategoryBase
 
     class Config:
