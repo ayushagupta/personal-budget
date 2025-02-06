@@ -31,7 +31,7 @@ class UserResponse(UserBase):
     class Config:
         from_attributes = True
 
-class UsersResoponse(BaseModel):
+class UsersResponse(BaseModel):
     total_count: int
     data: List[UserResponse]
 
