@@ -79,7 +79,7 @@ def delete_category(
     try:
         deleted_category = CategoryService.delete_category(db, category_id)
         if not deleted_category:
-            ResponseHandler.not_found_response(f"Category with id {category_id} not found")
+            return ResponseHandler.not_found_response(f"Category with id {category_id} not found")
 
         deleted_category_response = CategoryResponse.model_validate(deleted_category, from_attributes=True)
         return ResponseHandler.success_response(data=deleted_category_response.model_dump(), message="Category deleted successfully", status_code=200)
