@@ -23,8 +23,6 @@ class PasswordUpdate(BaseModel):
 
 class UserResponse(UserBase):
     id: int
-    transactions: List[TransactionBase]
-    budgets: List[BudgetBase]
     
     class Config:
         from_attributes = True
